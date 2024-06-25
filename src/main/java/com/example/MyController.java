@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.model.CounterModel;
+import com.example.model.MyViewModel;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.views.View;
@@ -13,7 +15,7 @@ public class MyController {
 
     @Get
     @View("home")
-    MyViewModel index() {
-        return new MyViewModel(counter.getAndIncrement());
+    MyViewModel<CounterModel> index() {
+        return MyViewModel.of(new CounterModel(counter.getAndIncrement()));
     }
 }
